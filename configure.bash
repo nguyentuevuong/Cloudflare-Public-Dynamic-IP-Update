@@ -72,7 +72,7 @@ for zoneID in ${zoneIDs[@]}; do
       read -r -p "Want to update? [y/n]: " response
       case "$response" in
         [yY])
-          updateTarget=$updateTarget","$(echo "{\"name\": $(echo $apiCall | jq .result[$index].name), \"id\": $(echo $apiCall | jq .result[$index].id), \"zone_id\": $(echo $apiCall | jq .result[$index].zone_id)}" | jq .)
+          updateTarget=$updateTarget","$(echo "{\"name\": $(echo $apiCall | jq .result[$index].name), \"id\": $(echo $apiCall | jq .result[$index].id), \"zone_id\": \"$zoneID\"}" | jq .)
           count=$[$count+1]
           echo -e "Add to update target\n"
           break
